@@ -114,20 +114,19 @@ was altered to include the [`rack-cors`][rack-cors] gem. The gem will be comment
 ```
 
 To get `rack-cors` working, uncomment the gem and run `bundle install`. Then, add the following to
-`config/application.rb` **within** `class Application < Rails::Application`:
+`config/application.rb` **inside** `class Application < Rails::Application`:
 
 ```ruby
-class Application < Rails::Application
-  ...
   config.middleware.insert_before 0, Rack::Cors do
     allow do
         origins '*'
         resource '*', headers: :any, methods: [:get, :post]
     end
   end
-  ...
-end
 ```
+
+> **Note**: This shouldn't replace anything else inside `class Application < Rails::Application`,
+> just be included in addition.
 
 This will allow you to test your APIs while developing them locally.
 **WARNING:** This allows any requests to be made to your API and is meant for
