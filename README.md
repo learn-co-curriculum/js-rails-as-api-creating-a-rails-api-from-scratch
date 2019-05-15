@@ -113,14 +113,19 @@ was altered to include the [`rack-cors`][rack-cors] gem. The gem will be comment
 # gem 'rack-cors'
 ```
 
-To get `rack-cors` working, uncomment the gem, run `bundle update` and add the following:
+To get `rack-cors` working, uncomment the gem and run `bundle install`. Then, add the following to
+`config/application.rb` **within** `class Application < Rails::Application`:
 
 ```ruby
-config.middleware.insert_before 0, Rack::Cors do
-  allow do
-      origins '*'
-      resource '*', headers: :any, methods: [:get, :post]
+class Application < Rails::Application
+  ...
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post]
+    end
   end
+  ...
 end
 ```
 
