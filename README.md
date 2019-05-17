@@ -82,8 +82,8 @@ Then the controller actions we want in the API will need to be added:
 
 ```ruby
 def index
-@sightings = Sighting.all
-render json: @sightings, include: [:bird, :location]
+sightings = Sighting.all
+render json: sightings, include: [:bird, :location]
 end
 ```
 
