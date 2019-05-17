@@ -82,8 +82,8 @@ Then the controller actions we want in the API will need to be added:
 
 ```ruby
 def index
-sightings = Sighting.all
-render json: sightings, include: [:bird, :location]
+  sightings = Sighting.all
+  render json: sightings, include: [:bird, :location]
 end
 ```
 
@@ -117,12 +117,12 @@ To get `rack-cors` working, uncomment the gem and run `bundle install`. Then, ad
 `config/application.rb` **inside** `class Application < Rails::Application`:
 
 ```ruby
-  config.middleware.insert_before 0, Rack::Cors do
-    allow do
-        origins '*'
-        resource '*', headers: :any, methods: [:get, :post]
-    end
+config.middleware.insert_before 0, Rack::Cors do
+  allow do
+      origins '*'
+      resource '*', headers: :any, methods: [:get, :post]
   end
+end
 ```
 
 This shouldn't replace anything else inside `class Application < Rails::Application`,
