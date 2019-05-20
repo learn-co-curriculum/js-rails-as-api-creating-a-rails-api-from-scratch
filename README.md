@@ -82,8 +82,8 @@ Then the controller actions we want in the API will need to be added:
 
 ```ruby
 def index
-@sightings = Sighting.all
-render json: @sightings, include: [:bird, :location]
+  sightings = Sighting.all
+  render json: sightings, include: [:bird, :location]
 end
 ```
 
@@ -99,11 +99,11 @@ this, though, you will need deal with [Cross-Origin Resource Sharing][CORS], or 
 
 CORS is designed to prevent scripts like `fetch()` from one origin accessing a
 resource from a different origin unless that resource specifically states that
-it expects to share. So, for instance, if you have run the command `rails s` and
-have your Rails server running at `http://localhost:3000`, then go to
+it expects to share. So, for instance, if you have run the command `rails
+server` with your server running at `http://localhost:3000`, then go to
 'www.google.com,' open the browser console and attempt to send a fetch to your
-server. The browser considers these two different origins, and will _refuse_ your
-request.
+server. The browser considers these two different origins, and will _refuse_
+your request.
 
 A solution is already provided though. By using the `--api` flag, the `Gemfile`
 was altered to include the [`rack-cors`][rack-cors] gem. The gem will be commented out initially:
@@ -117,27 +117,25 @@ To get `rack-cors` working, uncomment the gem and run `bundle install`. Then, ad
 `config/application.rb` **inside** `class Application < Rails::Application`:
 
 ```ruby
-  config.middleware.insert_before 0, Rack::Cors do
-    allow do
-        origins '*'
-        resource '*', headers: :any, methods: [:get, :post]
-    end
+config.middleware.insert_before 0, Rack::Cors do
+  allow do
+      origins '*'
+      resource '*', headers: :any, methods: [:get, :post]
   end
+end
 ```
 
-> **Note**: This shouldn't replace anything else inside `class Application < Rails::Application`,
-> just be included in addition.
+This shouldn't replace anything else inside `class Application < Rails::Application`,
+just be included in addition.
 
-This will allow you to test your APIs while developing them locally.
-**WARNING:** This allows any requests to be made to your API and is meant for
-development. Disabling CORS altogether in the long term will leave your server
-unsecure, but with `rack-cors`, it is possible to specify what endpoints and
-types of requests your API will allow. Check out the documentation on [CORS] and
-[`rack-cors`][rack-cors] for additional information.
+This will allow you to test your APIs while developing them locally. Secretly,
+`rack-cors` has been bundled with the last set of lessons to ensure they were
+all working smoothly in case you decided to code along and spin up a rudimentary
+API.
 
-**Note:** Secretly, `rack-cors` has been bundled with the last set of lessons to
-ensure they were all working smoothly in case you decided to code along and spin
-up a rudimentary API.
+**WARNING:** Disabling CORS altogether in the long term can leave your server
+unsecure. Check out the documentation on [CORS] and [`rack-cors`][rack-cors] for
+additional information.
 
 ## Conclusion
 
