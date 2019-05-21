@@ -14,14 +14,12 @@ specifically need it to act as an API that responds with JSON.
 
 When first building a Rails application, it is possible to flag that the
 application should be API-only. In this lesson, we will take a look at what this
-means and how it provides us with some useful automatic configurations. We will
-also briefly look at the `--database` flag, which will be necessary in our
-pursuit of building our own APIs.
+means and how it provides us with some useful automatic configurations.
 
 ## Using the `--api` Flag
 
 To create an API-only Rails build from scratch, include the `--api` after the
-name of the Rails application on creation:
+name of the Rails application name upon creation:
 
 ```sh
 rails new bird-watcher-api --api
@@ -32,7 +30,7 @@ middleware, mostly related to the browser, since it won't be needed. Controllers
 will inherit from `ActionController::API` rather than `ActionController::Base`
 and generators will skip generating views.
 
-One noticeable change - browser errors will disappear. Normally, when a Rails
+One noticeable change - some browser errors will disappear. Normally, when a Rails
 server is running, it produces an error message in browser when something goes
 wrong while attempting to render. Since there is no way to render views in this
 API-only build, if the Rails API fails and we visit it in browser, it will just
@@ -101,7 +99,7 @@ CORS is designed to prevent scripts like `fetch()` from one origin accessing a
 resource from a different origin unless that resource specifically states that
 it expects to share. So, for instance, if you have run the command `rails
 server` with your server running at `http://localhost:3000`, then go to
-'www.google.com,' open the browser console and attempt to send a fetch to your
+'www.google.com,' open the browser console and attempt to send a `fetch()` to your
 server. The browser considers these two different origins, and will _refuse_
 your request.
 
@@ -139,11 +137,14 @@ additional information.
 
 ## Conclusion
 
-With that, you have all that you need to get an API-only Rails build into
-development. If you can think of something that can be turned into an API, you
-now the power to one up in short order.
+With CORS enabled and your resources configured, you should be able to now
+run `rails server`, start up your API and begin sending requests to it. 
 
-Now that we know how to create APIs, we will take a closer look at shaping them.
+You have all that you need to get your own API-only Rails builds into
+development. If you can think of something that can be turned into an API, you
+now the power to spin one up in short order.
+
+With the ability to create APIs, we will take a closer look at shaping them.
 
 ## Resources
 
