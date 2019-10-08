@@ -142,7 +142,7 @@ run `rails server`, start up your API and begin sending requests to it.
 
 You have all that you need to get your own API-only Rails builds into
 development. If you can think of something that can be turned into an API, you
-now the power to spin one up in short order.
+now have the power to spin one up in short order.
 
 With the ability to create APIs, we will take a closer look at shaping them.
 
