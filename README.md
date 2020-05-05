@@ -18,8 +18,8 @@ means and how it provides us with some useful automatic configurations.
 
 ## Using the `--api` Flag
 
-To create an API-only Rails build from scratch, include the `--api` after the
-name of the Rails application name upon creation:
+To create an API-only Rails build from scratch, include the `--api` flag after the
+name of the Rails application upon creation:
 
 ```sh
 rails new bird-watcher-api --api
@@ -99,7 +99,7 @@ CORS is designed to prevent scripts like `fetch()` from one origin accessing a
 resource from a different origin unless that resource specifically states that
 it expects to share. So, for instance, if you have run the command `rails
 server` with your server running at `http://localhost:3000`, then go to
-'www.google.com,' open the browser console and attempt to send a `fetch()` to your
+'www.google.com', open the browser console and attempt to send a `fetch()` to your
 server. The browser considers these two different origins, and will _refuse_
 your request.
 
