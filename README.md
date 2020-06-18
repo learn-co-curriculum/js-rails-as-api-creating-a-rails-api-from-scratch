@@ -118,7 +118,6 @@ To get `rack-cors` working, uncomment the gem and run `bundle install`. Then, ad
  config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        # resource '*', headers: :any, methods: [:get, :post, :options]
         resource '*',
           :headers => :any,
           :methods => [:get, :post, :delete, :put, :patch, :options, :head],
