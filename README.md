@@ -115,12 +115,16 @@ To get `rack-cors` working, uncomment the gem and run `bundle install`. Then, ad
 `config/application.rb` **inside** `class Application < Rails::Application`:
 
 ```ruby
-config.middleware.insert_before 0, Rack::Cors do
-  allow do
-      origins '*'
-      resource '*', headers: :any, methods: [:get, :post]
-  end
-end
+ config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        # resource '*', headers: :any, methods: [:get, :post, :options]
+        resource '*',
+          :headers => :any,
+          :methods => [:get, :post, :delete, :put, :patch, :options, :head],
+          :max_age => 0
+      end
+    end
 ```
 
 This shouldn't replace anything else inside `class Application < Rails::Application`,
