@@ -1,0 +1,6 @@
+---
+:lessons:
+- :id: 10570
+  :course_id: 344
+  :canvas_url: https://learning.flatironschool.com/courses/344/pages/js-rails-as-api-creating-a-rails-api-from-scratch
+  :type: page
